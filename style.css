@@ -1,0 +1,80 @@
+:root {
+
+    --dark-green: #598f7f;
+    --light-green: #c5d8a4;
+    --light-beige: #fae9d4;
+    --dark-brown: #755851;
+    --light-brown: #ad9579;
+
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    ;
+}
+
+.header {
+    background-color: var(--dark-green);
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBar {}
+
+.recipesList {
+    width: 45vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.recipeCard {
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 40px;
+    color: white;
+    box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 250ms;
+}
+
+.recipeCard:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.recipeImage {
+    margin: 10px;
+    border-radius: 2px;
+}
+
+.recipeText {
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    color: var(--dark-green)
+}
+
+.recipeText h2 {
+    margin: 0;
+    color: #e40754;
+}
+
+.recipeText:hover h2 {
+    text-decoration: underline;
+}
+
+.recipeText p {
+    width: 80%;
+    height: 100;
+}
