@@ -16,19 +16,33 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    ;
 }
 
 .header {
-    background-color: var(--dark-green);
+    background-image: url(recetario-banner.png);
     width: 100%;
-    height: 25vh;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.recipeSearchBar {}
+.recipeSearchBar {
+    width: 572px;
+    height: 83px;
+    font-size: 400%;
+    font-family: monospace;
+    font-weight: normal;
+    border: 2px solid black;
+    padding-left: 0.5%;
+    padding-left: 0.5%;
+}
+
+.recipeSearchBar:focus,
+.recipeSearchBar:hover {
+    outline: 2px solid var(--dark-green);
+    border: 0px;
+}
 
 .recipesList {
     width: 45vw;
@@ -40,17 +54,19 @@ body {
 
 .recipeCard {
     width: 100%;
-    height: 25vh;
+    height: 20vh;
     display: flex;
     justify-content: space-evenly;
     margin: 40px;
     color: white;
     box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 250ms;
+    border: 1px solid black;
 }
 
 .recipeCard:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--dark-green);
 }
 
 .recipeImage {
@@ -67,7 +83,7 @@ body {
 
 .recipeText h2 {
     margin: 0;
-    color: #e40754;
+    color: black;
 }
 
 .recipeText:hover h2 {
