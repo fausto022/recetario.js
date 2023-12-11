@@ -1,6 +1,6 @@
 const recipesListElement = document.querySelector('.recipesList');
 const inputElement = document.querySelector('.recipeSearchBar');
-var recipesList;
+let recipesList;
 
 // ## Recipes Fetching from Tasty API ##
 async function fetchRecipes() {
@@ -15,8 +15,9 @@ async function fetchRecipes() {
 
     try {
         const res = await fetch(url, options)
-        const parsedResponsed = await res.json();
-        return parsedResponsed.results
+        const parsedResponse = await res.json();
+        console.log(parsedResponse.results);
+        return parsedResponse.results
     }
     catch (err) {
         console.error(err);
@@ -41,7 +42,7 @@ function filterRecipesListByName(inputName, recipeList) {
     */
     let recipesListItemsElement = ''
     recipesList.forEach(recipeObject => {
-        if (recipeObject.name.startsWith(inputName)) {
+        if (recipeObject.name.toLowerCase().startsWith(inputName.toLowerCase())) {
             recipeElementString = recipeElementStringFromObject(recipeObject);
             recipesListItemsElement += recipeElementString
         }
@@ -49,14 +50,18 @@ function filterRecipesListByName(inputName, recipeList) {
     return recipesListItemsElement;
 }
 
-function displayRecipes(recipesListElement, recipesListItemsElement) {
-    recipesListElement.innerHTML = recipesListItemsElement;
+function displayRecipes(recipesListInnerHtml, recipesListItemsElement) {
+    recipesListInnerHtml.innerHTML = recipesListItemsElement;
 }
 
 
 // ## Main ## fetches from the api, shows the entire list to the screen, adds functionality to the search bar
 
-// recipesList = fetchRecipes();
+// recipesList = fetchRecipes().then(() => {
+//     let recipeListItemsElement = filterRecipesListByName('', recipesList);
+//     displayRecipes(recipesListElement, recipeListItemsElement);
+// });
+
 recipesList = [
     { name: "milanesas de pollo", description: "de carne", thumbnail_url: "", slug: "" },
     { name: "galletitas de maicena", description: "con chips", thumbnail_url: "", slug: "" },
@@ -65,13 +70,12 @@ recipesList = [
     { name: "Sopa de calabaza", description: "para el invierno", thumbnail_url: "", slug: "" },
     { name: "Jugo de naranja", description: "Recien exprimido", thumbnail_url: "", slug: "" }
 ]
-
 let recipeListItemsElement = filterRecipesListByName('', recipesList);
 displayRecipes(recipesListElement, recipeListItemsElement);
 
 // ## Search Bar ##
 inputElement.onkeyup = (e) => {
     let userInput = e.target.value;
-    let filteredRecipesListItemsELement = filterRecipesListByName(userInput, recipesList);
-    displayRecipes(recipesListElement, filteredRecipesListItemsELement);
+    let filteredRecipesListInnerHTML = filterRecipesListByName(userInput, recipesList);
+    displayRecipes(recipesListElement, filteredRecipesListInnerHTML);
 }
